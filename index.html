@@ -1,0 +1,37 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Json Beautifier</title>
+  <link href="jsonTree.css" rel="stylesheet"/>
+  <script src="jsonTree.js"></script>
+</head>
+
+<body>
+<p>Beautify your JSON.</p>
+<div id="wrapper">
+  <div id="tree"></div>
+
+</div>
+
+<script>
+  var wrapper = document.getElementById("wrapper");
+
+  var dataStr = '{ "firstName": "Jonh", "lastName": "Smith", "phones": ["123-45-67", "987-65-43"]}';
+  try {
+    var data = JSON.parse(dataStr);
+  } catch (e) {
+  }
+
+  // Create json-tree
+  var tree = jsonTree.create(data, wrapper);
+
+  // Expand all (or selected) child nodes of root (optional)
+  tree.expand(function (node) {
+    return node.childNodes.length < 2;
+  });
+</script>
+</body>
+
+</html>
